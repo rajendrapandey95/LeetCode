@@ -1,0 +1,13 @@
+function rangeSumBST(root, low, high):
+    if root is null:
+        return 0
+    
+    result = 0
+    
+    if low <= root.val <= high:
+        result += root.val
+    
+    result += rangeSumBST(root.left, low, high)
+    result += rangeSumBST(root.right, low, high)
+    
+    return result
