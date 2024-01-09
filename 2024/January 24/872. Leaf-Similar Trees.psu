@@ -1,0 +1,17 @@
+function getLeafValues(root, leaves)
+    if root is null
+        return
+    if root has no left and no right child
+        append root.val to leaves
+        return
+    getLeafValues(root.left, leaves)
+    getLeafValues(root.right, leaves)
+
+function leafSimilar(root1, root2)
+    initialize leaves1 as an empty list
+    initialize leaves2 as an empty list
+    
+    call getLeafValues(root1, leaves1)
+    call getLeafValues(root2, leaves2)
+    
+    return leaves1 is equal to leaves2
