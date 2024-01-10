@@ -1,0 +1,31 @@
+class TreeNode:
+    int val
+    TreeNode left
+    TreeNode right
+
+class Solution:
+    int maxDistance
+
+    def amountOfTime(root, start):
+        maxDistance = 0
+        traverse(root, start)
+        return maxDistance
+
+    def traverse(root, start):
+        if root is null:
+            return 0
+
+        leftDepth = traverse(root.left, start)
+        rightDepth = traverse(root.right, start)
+
+        if root.val == start:
+            maxDistance = max(leftDepth, rightDepth)
+            depth = -1
+        elif leftDepth >= 0 and rightDepth >= 0:
+            depth = max(leftDepth, rightDepth) + 1
+        else:
+            distance = abs(leftDepth) + abs(rightDepth)
+            maxDistance = max(maxDistance, distance)
+            depth = min(leftDepth, rightDepth) - 1
+
+        return depth
