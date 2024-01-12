@@ -1,0 +1,19 @@
+function count_vowels(string):
+    vowels = set("aeiouAEIOU")
+    count = 0
+    for char in string:
+        if char in vowels:
+            count += 1
+    return count
+
+class Solution:
+    function halvesAreAlike(s):
+        n = length of s
+        mid = n / 2
+
+        # Count vowels in the first half (a) and the second half (b)
+        count_a = count_vowels(substring of s from index 0 to mid - 1)
+        count_b = count_vowels(substring of s from index mid to n - 1)
+
+        # Check if the counts are equal
+        return (count_a == count_b)
