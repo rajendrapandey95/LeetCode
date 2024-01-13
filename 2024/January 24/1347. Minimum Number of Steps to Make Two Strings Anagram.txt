@@ -1,0 +1,18 @@
+Algorithm minSteps(s, t):
+    # Initialize an array to store the count of characters
+    count = array of size 26, initialized to zeros
+
+    # Calculate the difference of frequencies of characters in t and s
+    for i = 0 to length(s) - 1:
+        count[ord(t[i]) - ord('a')] += 1
+        count[ord(s[i]) - ord('a')] -= 1
+
+    # Initialize a variable to store the result
+    ans = 0
+
+    # Add the positive differences where string t has more instances than s
+    for i = 0 to 25:
+        ans += max(0, count[i])
+
+    # Return the result
+    return ans
