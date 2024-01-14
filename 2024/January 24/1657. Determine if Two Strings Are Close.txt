@@ -1,0 +1,35 @@
+function closeStrings(word1, word2):
+    # Check if the sets of characters are equal
+    if set(word1) is not equal to set(word2):
+        return False
+
+    # Initialize frequency lists for each word
+    freq1 = []
+    freq2 = []
+
+    # Calculate frequencies for word1
+    for char in set(word1):
+        freq1.append(countOccurrences(word1, char))
+
+    # Calculate frequencies for word2
+    for char in set(word2):
+        freq2.append(countOccurrences(word2, char))
+
+    # Sort the frequency lists
+    sort(freq1)
+    sort(freq2)
+
+    # Check if the sorted frequency lists are equal
+    if freq1 is not equal to freq2:
+        return False
+
+    # If both conditions are met, the words are close
+    return True
+
+function countOccurrences(word, char):
+    # Count the occurrences of char in the word
+    count = 0
+    for c in word:
+        if c is equal to char:
+            count += 1
+    return count
