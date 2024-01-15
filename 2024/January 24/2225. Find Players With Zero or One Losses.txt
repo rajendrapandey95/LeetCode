@@ -1,0 +1,29 @@
+function findWinners(matches):
+    // Create a dictionary to store the count of losses for each player
+    losses_count = {}
+
+    // Iterate through matches to count losses
+    for each match in matches:
+        winner, loser = match
+        // Increment the loss count for the loser
+        losses_count[loser] += 1
+
+    // Initialize lists to store winners and losers based on the criteria
+    not_lost_any_matches = []
+    lost_one_match = []
+
+    // Iterate through players to categorize them
+    for each player in all_players_in_matches(matches):
+        // Check if the player has not lost any matches
+        if player not in losses_count:
+            append player to not_lost_any_matches
+        // Check if the player has lost exactly one match
+        else if losses_count[player] == 1:
+            append player to lost_one_match
+
+    // Sort the lists in increasing order
+    sort not_lost_any_matches
+    sort lost_one_match
+
+    // Return the result as a list of lists
+    return [not_lost_any_matches, lost_one_match]
