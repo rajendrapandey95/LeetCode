@@ -1,0 +1,28 @@
+class RandomizedSet:
+    Initialize:
+        val_to_index = {}  # Dictionary to store values and their indices
+        values = []        # List to store values
+
+    Insert:
+        Function insert(val):
+            if val in val_to_index:
+                return False  # Value already exists in the set
+            Append val to values
+            Update val_to_index with (val, index in values)
+            return True
+
+    Remove:
+        Function remove(val):
+            if val not in val_to_index:
+                return False  # Value doesn't exist in the set
+            last_value = last element in values
+            val_index = val_to_index[val]
+            Set values[val_index] to last_value
+            Update val_to_index[last_value] to val_index
+            Remove last element from values
+            Remove val from val_to_index
+            return True
+
+    Get Random:
+        Function getRandom():
+            Return random element from values
