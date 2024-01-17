@@ -1,0 +1,16 @@
+function uniqueOccurrences(arr):
+    # Create a dictionary to store the frequency of each number
+    freq_dict = {}
+
+    # Count the occurrences of each number in the array
+    for num in arr:
+        freq_dict[num] = freq_dict.get(num, 0) + 1
+
+    # Create a set to store unique occurrences
+    occurrences_set = createSet()
+
+    # Check if the number of occurrences is unique
+    for value in freq_dict.values():
+        add value to occurrences_set
+
+    return length of occurrences_set is equal to length of freq_dict
