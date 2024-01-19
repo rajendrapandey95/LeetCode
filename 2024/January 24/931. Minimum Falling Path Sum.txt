@@ -1,0 +1,15 @@
+Function minFallingPathSum(matrix):
+    n = size of matrix
+    
+    # Iterate through each row starting from the second row
+    for row from 1 to n - 1:
+        for col from 0 to n - 1:
+            # Update the current cell with the minimum falling path sum
+            matrix[row][col] += min(
+                matrix[row-1][col],                        # directly above
+                matrix[row-1][max(0, col-1)],              # diagonally left
+                matrix[row-1][min(n-1, col+1)]             # diagonally right
+            )
+
+    # The minimum falling path sum is the minimum value in the last row
+    return min(matrix[-1])
