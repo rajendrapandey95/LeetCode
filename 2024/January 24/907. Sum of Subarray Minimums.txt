@@ -1,0 +1,31 @@
+Function sumSubarrayMins(arr):
+    mod = 10^9 + 7
+    stack = empty list
+    result = 0
+
+    left = array of zeros with the same length as arr
+    right = array of zeros with the same length as arr
+
+    # Initialize left array
+    For i from 0 to length(arr) - 1:
+        While stack is not empty and arr[i] < arr[top of stack]:
+            Pop top of stack
+        left[i] = top of stack if stack is not empty else -1
+        Push i onto stack
+
+    # Clear the stack for the right array
+    Clear stack
+
+    # Initialize right array
+    For i from length(arr) - 1 to 0:
+        While stack is not empty and arr[i] <= arr[top of stack]:
+            Pop top of stack
+        right[i] = top of stack if stack is not empty else length(arr)
+        Push i onto stack
+
+    # Calculate the sum of subarray mins
+    For i from 0 to length(arr) - 1:
+        result += arr[i] * (i - left[i] + 1) * (right[i] - i + 1)
+        result %= mod
+
+    Return result
