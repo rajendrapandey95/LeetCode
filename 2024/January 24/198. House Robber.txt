@@ -1,0 +1,20 @@
+Function rob(nums: List of integers) -> Integer:
+    # Handle edge cases
+    if nums is empty:
+        return 0
+    elif length of nums is 1:
+        return nums[0]
+
+    # Initialize an array to store the maximum amount of money robbed up to each house
+    max_money = array of size length(nums)
+
+    # Base cases
+    max_money[0] = nums[0]
+    max_money[1] = max(nums[0], nums[1])
+
+    # Dynamic programming to fill the max_money array
+    for i from 2 to length(nums) - 1:
+        max_money[i] = max(max_money[i-1], max_money[i-2] + nums[i])
+
+    # The final element in max_money array contains the maximum amount of money that can be robbed
+    return max_money[length(nums) - 1]
