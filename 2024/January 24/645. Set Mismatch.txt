@@ -1,0 +1,15 @@
+Function findErrorNums(nums: List[int]) -> List[int]:
+    n = length of nums
+    
+    # Calculate the sum of unique numbers and the sum of the array
+    unique_sum = sum of unique elements in nums
+    total_sum = sum of all elements in nums
+    
+    # Find the repeated number
+    repeated_num = total_sum - unique_sum
+    
+    # Find the missing number
+    expected_sum = (n * (n + 1)) / 2
+    missing_num = expected_sum - unique_sum
+    
+    Return [repeated_num, missing_num]
