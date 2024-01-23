@@ -1,0 +1,24 @@
+Function maxLength(arr: List of strings) -> Integer
+    max_length = 0
+
+    Function is_unique(s: String) -> Boolean
+        # Check if all characters in the string are unique
+        return length(set(s)) == length(s)
+
+    Function backtrack(start: Integer, current: String)
+        nonlocal max_length
+
+        # Check if the current string has unique characters
+        if is_unique(current)
+            max_length = max(max_length, length(current))
+
+        # Explore all possible subsequences
+        for i in range(start, length(arr))
+            # Add the current string to the subsequence
+            backtrack(i + 1, current + arr[i])
+
+    # Start the backtracking process with an empty string
+    backtrack(0, '')
+
+    # Return the maximum length found
+    return max_length
