@@ -1,0 +1,35 @@
+pseudoPalindromicPaths(root):
+    # Initialize a function to check if the current path is pseudo-palindromic
+    function isPseudoPalindrome(freq):
+        oddCount = 0
+        for count in freq.values():
+            if count is odd:
+                oddCount += 1
+            if oddCount > 1:
+                return false
+        return true
+
+    # Initialize a depth-first search (DFS) function
+    function dfs(node, freq):
+        if node is null:
+            return 0
+
+        # Update frequency of the current digit
+        freq[node.val] += 1
+
+        # If it's a leaf node, check if the path is pseudo-palindromic
+        if node has no children:
+            result = 1 if isPseudoPalindrome(freq) else 0
+        else:
+            # Explore left and right subtrees
+            result = dfs(node.left, freq) + dfs(node.right, freq)
+
+        # Backtrack: restore the frequency before returning
+        freq[node.val] -= 1
+
+        return result
+
+    # Initialize frequency dictionary
+    freq = defaultdict(int)
+    return dfs(root, freq)
+
