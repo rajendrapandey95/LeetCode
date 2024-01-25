@@ -1,0 +1,23 @@
+function longestCommonSubsequence(text1, text2):
+    m = length of text1
+    n = length of text2
+    
+    // Create a 2D array to store the length of the common subsequence
+    dp = new 2D array with dimensions (m+1) x (n+1)
+    
+    // Initialize the base cases (first row and first column)
+    for i from 0 to m:
+        dp[i][0] = 0
+    for j from 0 to n:
+        dp[0][j] = 0
+    
+    // Fill the dp array using dynamic programming
+    for i from 1 to m:
+        for j from 1 to n:
+            if text1[i-1] == text2[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    
+    // The result is stored in the bottom-right cell of the dp array
+    return dp[m][n]
