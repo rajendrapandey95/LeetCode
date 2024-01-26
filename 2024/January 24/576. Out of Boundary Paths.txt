@@ -1,0 +1,27 @@
+function findPaths(m, n, maxMove, startRow, startColumn):
+    MOD = 10^9 + 7
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # Right, Down, Left, Up
+
+    # Initialize a 3D array to store the number of ways to reach each cell in a given number of moves
+    dp[m][n][maxMove + 1]
+
+    # Initialize the base case (start position with 0 moves)
+    dp[startRow][startColumn][0] = 1
+
+    result = 0
+
+    # Iterate over the number of moves
+    for move from 1 to maxMove:
+        for i from 0 to m-1:
+            for j from 0 to n-1:
+                for d in directions:
+                    ni, nj = i + d[0], j + d[1]
+
+                    # Check if the neighboring cell is within the boundary
+                    if 0 <= ni < m and 0 <= nj < n:
+                        dp[i][j][move] = (dp[i][j][move] + dp[ni][nj][move - 1]) % MOD
+                    else:
+                        # If the neighboring cell is outside the boundary, add the path to the result
+                        result = (result + dp[i][j][move - 1]) % MOD
+
+    return result
