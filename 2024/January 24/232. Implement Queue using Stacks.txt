@@ -1,0 +1,29 @@
+class MyQueue:
+    stack1 = []  // For enqueue operations
+    stack2 = []  // For dequeue operations
+
+    function push(x: int):
+        stack1.push(x)
+
+    function transferElements():
+        // Transfer elements from stack1 to stack2 if stack2 is empty
+        if stack2.isEmpty():
+            while not stack1.isEmpty():
+                stack2.push(stack1.pop())
+
+    function pop() -> int:
+        transferElements()
+        if not stack2.isEmpty():
+            return stack2.pop()
+        else:
+            throw Exception("Queue is empty")
+
+    function peek() -> int:
+        transferElements()
+        if not stack2.isEmpty():
+            return stack2.top()
+        else:
+            throw Exception("Queue is empty")
+
+    function empty() -> bool:
+        return stack1.isEmpty() and stack2.isEmpty()
