@@ -1,0 +1,44 @@
+class Solution:
+    function evalRPN(tokens: List of strings) -> integer:
+        stack = empty list
+        
+        for each token in tokens:
+            if token is a number:
+                # Convert the token to an integer and push it onto the stack
+                stack.push(convertToInt(token))
+            else:
+                # Token is an operator
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+                
+                # Perform the operation based on the operator
+                if token is '+':
+                    result = operand1 + operand2
+                elif token is '-':
+                    result = operand1 - operand2
+                elif token is '*':
+                    result = operand1 * operand2
+                elif token is '/':
+                    # Handle the division truncating toward zero
+                    result = integerDivision(operand1, operand2)
+                
+                # Push the result back onto the stack
+                stack.push(result)
+        
+        # The final result is at the top of the stack
+        return stack.top()
+
+# Helper functions
+function convertToInt(s: string) -> integer:
+    # Convert a string to an integer, considering negative numbers
+    if s starts with '-':
+        return -1 * convertToInt(s[1:])
+    else:
+        return integer(s)
+
+function integerDivision(a: integer, b: integer) -> integer:
+    # Perform integer division and truncate toward zero
+    if (a < 0 and b > 0) or (a > 0 and b < 0):
+        return -1 * (abs(a) // abs(b))
+    else:
+        return a // b
