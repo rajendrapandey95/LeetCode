@@ -1,0 +1,14 @@
+class Solution:
+    function dailyTemperatures(temperatures: List of Integers) -> List of Integers:
+        n = length of temperatures
+        result = create a list of n zeros
+        stack = empty stack
+
+        for i from 0 to n-1:
+            while stack is not empty and temperatures[i] > temperatures[stack.top()]:
+                prevIndex = stack.pop()
+                result[prevIndex] = i - prevIndex
+
+            stack.push(i)
+
+        return result
