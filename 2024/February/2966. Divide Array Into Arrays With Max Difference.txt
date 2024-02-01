@@ -1,0 +1,19 @@
+function divideArray(nums: List[int], k: int) -> List[List[int]]:
+    // Sort the given array
+    nums.sort()
+
+    // Initialize an empty list to store the result
+    ans = []
+
+    // Iterate through the sorted array in steps of 3
+    for i from 0 to len(nums) step 3:
+        // Check if the difference between the first and last elements in the current group is greater than k
+        if i + 2 < len(nums) and nums[i + 2] - nums[i] > k:
+            // If the condition is not satisfied, return an empty list
+            return []
+
+        // Add the current group to the result list
+        ans.append([nums[i], nums[i + 1], nums[i + 2]])
+
+    // Return the final result
+    return ans
