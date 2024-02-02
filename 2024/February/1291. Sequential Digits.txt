@@ -1,0 +1,15 @@
+class Solution:
+    function sequentialDigits(low, high):
+        result = empty list
+        for length in range(length(low), length(high) + 1):
+            for start in range(1, 10 - length + 1):
+                num = concatenate_digits(start, length)
+                if low <= num <= high:
+                    append num to result
+        return result
+
+    function concatenate_digits(start, length):
+        result = empty string
+        for i in range(length):
+            append (start + i) to result
+        return convert result to integer
