@@ -1,0 +1,12 @@
+FUNCTION maxSumAfterPartitioning(arr: List[int], k: int) -> int:
+    n = LENGTH(arr)
+    dp = [0] * n
+    
+    FOR i FROM 0 TO n-1 DO:
+        current_max = 0
+        FOR j FROM 1 TO k DO:
+            IF i - j + 1 >= 0 THEN:
+                current_max = MAX(current_max, arr[i - j + 1])
+                dp[i] = MAX(dp[i], (dp[i - j] IF i - j >= 0 ELSE 0) + current_max * j)
+    
+    RETURN dp[n - 1]
