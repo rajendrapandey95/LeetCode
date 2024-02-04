@@ -1,0 +1,45 @@
+FUNCTION minWindow(s: STRING, t: STRING) -> STRING:
+    // Initialize variables
+    left := 0
+    right := 0
+    minLen := INFINITY
+    minWindow := ""
+    requiredChars := Counter(t)
+    currentWindow := Counter()
+
+    // Count of characters in the current window that are required
+    requiredCharsCount := LENGTH(requiredChars)
+
+    // Iterate through the string 's' using the sliding window technique
+    WHILE right < LENGTH(s):
+        // Expand the window
+        currentChar := s[right]
+        currentWindow[currentChar] += 1
+
+        // Check if a character from 't' is found in the window
+        IF currentChar IN requiredChars AND currentWindow[currentChar] == requiredChars[currentChar]:
+            requiredCharsCount -= 1
+
+        // Try to minimize the window by contracting from the left
+        WHILE requiredCharsCount == 0:
+            // Update the minimum window if smaller
+            IF right - left + 1 < minLen:
+                minLen := right - left + 1
+                minWindow := SUBSTRING(s, left, right + 1)
+
+            // Contract the window from the left
+            leftChar := s[left]
+            currentWindow[leftChar] -= 1
+
+            // Check if a character from 't' is removed from the window
+            IF leftChar IN requiredChars AND currentWindow[leftChar] < requiredChars[leftChar]:
+                requiredCharsCount += 1
+
+            // Move the left pointer to expand the window
+            left := left + 1
+
+        // Move the right pointer to expand the window
+        right := right + 1
+
+    // Return the minimum window substring
+    RETURN minWindow
