@@ -1,0 +1,19 @@
+class Solution:
+    function firstUniqChar(s: string) -> integer:
+        // Initialize a dictionary to store the count of each character
+        char_count = {}
+
+        // Count the occurrences of each character in the string
+        for each char in s:
+            if char is in char_count:
+                char_count[char] += 1
+            else:
+                char_count[char] = 1
+
+        // Find the index of the first non-repeating character
+        for i from 0 to length of s - 1:
+            if char_count[s[i]] == 1:
+                return i
+
+        // If no non-repeating character is found, return -1
+        return -1
