@@ -1,0 +1,15 @@
+function groupAnagrams(strs: List of Strings) -> List of List of Strings:
+    anagrams = {}  // Initialize an empty dictionary to store grouped anagrams
+    
+    // Iterate through each word in the input list of strings
+    for each word in strs:
+        sorted_word = sort(word)  // Sort the characters of the word
+        
+        // Check if the sorted word exists as a key in the dictionary
+        if sorted_word exists in anagrams:
+            Add the word to the list corresponding to the sorted word key
+        else:
+            Create a new list with the word and store it under the sorted word key in the dictionary
+    
+    // Convert the values of the dictionary into a list and return
+    return Convert dictionary values to a list of lists
