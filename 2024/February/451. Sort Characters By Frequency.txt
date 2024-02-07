@@ -1,0 +1,18 @@
+function frequencySort(s: string) -> string:
+    // Step 1: Initialize a dictionary to store character frequencies
+    char_freq = empty dictionary
+    
+    // Step 2: Count the frequency of each character
+    for each character c in s:
+        increment char_freq[c]
+    
+    // Step 3: Sort the characters based on their frequencies in decreasing order
+    sorted_chars = sort characters in s by frequency in descending order
+    
+    // Step 4: Construct the sorted string
+    sorted_string = empty string
+    for each character c in sorted_chars:
+        append c * char_freq[c] to sorted_string
+    
+    // Step 5: Return the sorted string
+    return sorted_string
