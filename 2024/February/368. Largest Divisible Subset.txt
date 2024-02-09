@@ -1,0 +1,26 @@
+function largestDivisibleSubset(nums):
+    if nums is empty:
+        return an empty list
+    
+    sort nums in ascending order
+    n = length of nums
+    dp = array of size n initialized with 1's  # dp[i] stores the length of the largest subset ending at nums[i]
+    parent = array of size n initialized with -1's  # parent[i] stores the index of the previous element in the largest subset ending at nums[i]
+    max_len = 1
+    max_index = 0
+    
+    for i from 1 to n - 1:
+        for j from 0 to i - 1:
+            if nums[i] is divisible by nums[j] and dp[i] < dp[j] + 1:
+                dp[i] = dp[j] + 1
+                parent[i] = j
+                if dp[i] > max_len:
+                    max_len = dp[i]
+                    max_index = i
+    
+    result = empty list
+    while max_index != -1:
+        append nums[max_index] to result
+        max_index = parent[max_index]
+    
+    return result reversed  # Reversing the result to get the subset in ascending order
