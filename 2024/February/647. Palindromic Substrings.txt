@@ -1,0 +1,27 @@
+Function countPalindromicSubstrings(s):
+    n = length of s
+    count = 0
+
+    # Create a 2D array to store whether substrings are palindromic or not
+    dp = 2D array of size n x n, initialized with False
+
+    # Every single character is a palindrome
+    for i from 0 to n-1:
+        dp[i][i] = True
+        count += 1
+
+    # Check for palindromic substrings of length 2
+    for i from 0 to n-2:
+        if s[i] == s[i + 1]:
+            dp[i][i + 1] = True
+            count += 1
+
+    # Check for palindromic substrings of length greater than 2
+    for length from 3 to n:
+        for i from 0 to n - length:
+            j = i + length - 1
+            if s[i] == s[j] and dp[i + 1][j - 1]:
+                dp[i][j] = True
+                count += 1
+
+    return count
