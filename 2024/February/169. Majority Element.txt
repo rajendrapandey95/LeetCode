@@ -1,0 +1,14 @@
+Function majorityElement(nums):
+    candidate := None
+    count := 0
+    
+    For each num in nums:
+        If count is 0:
+            candidate := num
+            count := 1
+        Else if num is equal to candidate:
+            Increment count
+        Else:
+            Decrement count
+            
+    Return candidate
