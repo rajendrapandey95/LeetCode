@@ -1,0 +1,9 @@
+function isPalindrome(s: string) -> boolean:
+    reverse_s = reverse(s)
+    return s == reverse_s
+
+function firstPalindrome(words: array of strings) -> string:
+    for word in words:
+        if isPalindrome(word):
+            return word
+    return ""
