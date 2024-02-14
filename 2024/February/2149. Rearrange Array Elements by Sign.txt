@@ -1,0 +1,29 @@
+// Function to rearrange an array of integers into negative-positive or positive-negative order
+// Input: Array `nums`
+// Output: Rearranged array `ans`
+
+function rearrangeArray(nums):
+  // Array length
+  n = length(nums)
+
+  // Create empty output array
+  ans = new array of size n with all elements as 0
+
+  // Indices for positive and negative elements
+  pos_index = 0
+  neg_index = 1
+
+  // Iterate through the input array
+  for i = 0 to n - 1:
+    // Handle positive elements
+    if nums[i] > 0:
+      ans[pos_index] = nums[i]
+      pos_index += 2  // Increment positive index by 2
+
+    // Handle negative or zero elements
+    else:
+      ans[neg_index] = nums[i]
+      neg_index += 2  // Increment negative index by 2
+
+  // Return the rearranged array
+  return ans
