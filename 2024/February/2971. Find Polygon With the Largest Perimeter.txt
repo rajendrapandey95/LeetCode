@@ -1,0 +1,9 @@
+function largestPerimeter(nums: array of integers) -> integer:
+    sort(nums)  // Sort the input array in non-decreasing order
+    previous_elements_sum = 0
+    ans = -1
+    for each num in nums:
+        if num < previous_elements_sum:
+            ans = num + previous_elements_sum
+        previous_elements_sum += num
+    return ans
