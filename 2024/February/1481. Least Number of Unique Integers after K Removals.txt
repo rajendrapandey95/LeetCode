@@ -1,0 +1,34 @@
+function findLeastNumOfUniqueInts(arr: List[int], k: int) -> int:
+    // Step 1: Count the frequency of each integer
+    frequency = CountFrequency(arr)
+    
+    // Step 2: Sort the frequencies in ascending order
+    sorted_freq = SortFrequency(frequency)
+    
+    // Step 3: Remove the minimum number of integers until k is reached
+    num_unique = Length(sorted_freq)
+    for freq in sorted_freq:
+        if k >= freq:
+            k -= freq
+            num_unique -= 1
+        else:
+            break
+    
+    // Step 4: Return the number of remaining unique integers
+    return num_unique
+
+// Helper function to count the frequency of each integer
+function CountFrequency(arr: List[int]) -> Map[int, int]:
+    frequency = an empty map
+    for num in arr:
+        if num is not in frequency:
+            frequency[num] = 1
+        else:
+            frequency[num] += 1
+    return frequency
+
+// Helper function to sort the frequencies in ascending order
+function SortFrequency(frequency: Map[int, int]) -> List[int]:
+    sorted_freq = convert frequency values to list
+    Sort sorted_freq in ascending order
+    return sorted_freq
