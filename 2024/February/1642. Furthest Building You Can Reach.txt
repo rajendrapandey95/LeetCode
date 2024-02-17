@@ -1,0 +1,12 @@
+function furthestBuilding(heights, bricks, ladders):
+    diffs = Priority Queue
+    total_bricks = 0
+    for i from 0 to len(heights) - 2:
+        diff = heights[i + 1] - heights[i]
+        if diff > 0:
+            add diff to diffs
+            if length of diffs > ladders:
+                total_bricks += remove smallest element from diffs
+            if total_bricks > bricks:
+                return i
+    return len(heights) - 1
