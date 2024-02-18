@@ -1,0 +1,26 @@
+function mostBooked(n, meetings):
+    room_availability_time = array of size n, initialized with zeros
+    meeting_count = array of size n, initialized with zeros
+    
+    sort meetings based on start time
+    
+    for each meeting in sorted meetings:
+        min_room_availability_time = infinity
+        min_available_time_room = 0
+        found_unused_room = false
+        
+        for i from 0 to n-1:
+            if room_availability_time[i] <= meeting.start:
+                found_unused_room = true
+                increment meeting_count[i] by 1
+                update room_availability_time[i] to meeting.end
+                break
+            if room_availability_time[i] < min_room_availability_time:
+                update min_room_availability_time to room_availability_time[i]
+                update min_available_time_room to i
+        
+        if not found_unused_room:
+            update room_availability_time[min_available_time_room] by adding meeting duration
+            increment meeting_count[min_available_time_room] by 1
+    
+    return index of the room with the maximum value in meeting_count
