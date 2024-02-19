@@ -1,0 +1,4 @@
+Function isPowerOfTwo(n: Integer) -> Boolean:
+    if n <= 0:
+        return False
+    return n bitwise AND (n - 1) equals 0
