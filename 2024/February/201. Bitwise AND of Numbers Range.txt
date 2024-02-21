@@ -1,0 +1,13 @@
+Function rangeBitwiseAnd(left: Integer, right: Integer) -> Integer
+    Initialize shiftCount to 0
+    
+    // Keep shifting both `left` and `right` to the right until they become equal
+    While left is not equal to right
+        Shift left one bit to the right (left = left / 2)
+        Shift right one bit to the right (right = right / 2)
+        Increment shiftCount by 1
+    
+    // Once `left` and `right` are equal, shift `left` back to the left
+    // by shiftCount to form the result
+    Return left shifted to the left by shiftCount (left * 2^shiftCount)
+End Function
