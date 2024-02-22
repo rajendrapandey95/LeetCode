@@ -1,0 +1,14 @@
+Function findJudge(n, trust):
+    Initialize arrays trust_count and trusted_count with all elements set to 0
+    
+    Iterate through the trust array:
+        For each pair (a, b) in trust:
+            Increment trust_count[a]
+            Increment trusted_count[b]
+    
+    Iterate through the range from 1 to n:
+        If trust_count[i] equals 0 and trusted_count[i] equals n - 1:
+            Return i (this is the town judge)
+    
+    If no town judge is found:
+        Return -1
