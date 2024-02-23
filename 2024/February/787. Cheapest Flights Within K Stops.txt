@@ -1,0 +1,53 @@
+function findCheapestPrice(n, flights, src, dst, k):
+    # Create graphs for outgoing and incoming flights
+    graph_out = {}
+    graph_in = {}
+    for each flight in flights:
+        start, end, price = flight
+        if start not in graph_out:
+            graph_out[start] = []
+        if end not in graph_in:
+            graph_in[end] = []
+        graph_out[start].append((end, price))
+        graph_in[end].append((start, price))
+    
+    # Initialize priority queues for both directions
+    pq_out = Priority_Queue()
+    pq_in = Priority_Queue()
+    
+    # Initialize dictionaries to track visited nodes and their costs
+    visited_out = {}
+    visited_in = {}
+    
+    # Push initial nodes to their respective priority queues
+    pq_out.push((0, src, 0))
+    pq_in.push((0, dst, 0))
+    
+    # Loop while priority queues are not empty
+    while pq_out is not empty or pq_in is not empty:
+        # Search from source direction
+        if pq_out is not empty:
+            price, city, stops = pq_out.pop()
+            if city == dst:  # If destination is reached
+                return price
+            if city not in visited_out or stops <= visited_out[city]:
+                visited_out[city] = stops
+                if stops <= k:
+                    if city in graph_out:
+                        for each neighbor, cost in graph_out[city]:
+                            pq_out.push((price + cost, neighbor, stops + 1))
+        
+        # Search from destination direction
+        if pq_in is not empty:
+            price, city, stops = pq_in.pop()
+            if city == src:  # If destination is reached
+                return price
+            if city not in visited_in or stops <= visited_in[city]:
+                visited_in[city] = stops
+                if stops <= k:
+                    if city in graph_in:
+                        for each neighbor, cost in graph_in[city]:
+                            pq_in.push((price + cost, neighbor, stops + 1))
+    
+    # If destination cannot be reached within k stops
+    return -1
