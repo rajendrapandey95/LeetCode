@@ -1,0 +1,65 @@
+function canTraverseAllPairs(nums):
+    MAX = 100000
+    N = length(nums)
+    has = array of size (MAX + 1), initialized with False
+    for x in nums:
+        has[x] = True
+
+    // Edge cases
+    if N == 1:
+        return True
+    if has[1]:
+        return False
+
+    // Prime sieve optimization
+    sieve = array of size (MAX + 1), initialized with 0
+    for d from 2 to sqrt(MAX):
+        if sieve[d] == 0:
+            for v from d * d to MAX step d:
+                sieve[v] = d
+    for d from 2 to MAX:
+        if sieve[d] == 0:
+            sieve[d] = d
+
+    // Union-Find initialization
+    union = DSU(2 * MAX + 1)
+
+    // Traverse nums
+    for x in nums:
+        val = x
+        while val > 1:
+            prime = sieve[val]
+            root = prime + MAX
+            if union.find(root) != union.find(x):
+                union.merge(root, x)
+            val = val / prime
+
+    cnt = 0
+    for i from 2 to MAX:
+        if has[i] and union.find(i) == i:
+            cnt++
+            if cnt > 1:
+                return False
+    return cnt == 1
+
+
+class DSU:
+    function __init__(N):
+        dsu = array of size (N + 1), initialized with indices
+        size = array of size (N + 1), initialized with 1
+
+    function find(x):
+        if dsu[x] == x:
+            return x
+        dsu[x] = find(dsu[x])
+        return dsu[x]
+
+    function merge(x, y):
+        fx = find(x)
+        fy = find(y)
+        if fx == fy:
+            return
+        if size[fx] > size[fy]:
+            swap fx and fy
+        dsu[fx] = fy
+        size[fy] += size[fx]
