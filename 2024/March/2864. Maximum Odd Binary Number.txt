@@ -1,0 +1,16 @@
+Function maximumOddBinaryNumber(s):
+    Let index = FindIndexRightmostOne(s)
+    
+    If index == 0:
+        Return s
+    
+    Return ConstructMaximumOddBinaryNumber(s, index)
+
+Function FindIndexRightmostOne(s):
+    Return IndexOfRightmostOneInString(s)
+
+Function ConstructMaximumOddBinaryNumber(s, index):
+    Return "1" + s[1:index] + "1" + s[index + 1:]
+
+Function IndexOfRightmostOneInString(s):
+    Return index of the rightmost '1' in the string s
