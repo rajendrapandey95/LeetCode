@@ -1,0 +1,29 @@
+class ListNode:
+    val: int
+    next: Optional[ListNode]
+
+class Solution:
+    function removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        // Create a dummy node and point it to the head of the list
+        dummy = new ListNode(0)
+        dummy.next = head
+        
+        // Initialize two pointers, first and second, both pointing to the dummy node initially
+        first = dummy
+        second = dummy
+        
+        // Move the first pointer n+1 steps forward
+        for i from 1 to n+1:
+            first = first.next
+        
+        // Move both pointers simultaneously until the first pointer reaches the end of the list
+        while first is not null:
+            first = first.next
+            second = second.next
+        
+        // Once the first pointer reaches the end, the second pointer will be pointing to the (n-1)th node from the end
+        // So, we skip the nth node by adjusting the next pointer of the (n-1)th node
+        second.next = second.next.next
+        
+        // Return the updated head of the list
+        return dummy.next
