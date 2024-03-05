@@ -1,0 +1,18 @@
+function minimumLength(s: string) -> integer:
+    left := 0
+    right := length(s) - 1
+    
+    while left < right and s[left] == s[right]:
+        char := s[left]
+        
+        while left <= right and s[left] == char:
+            left := left + 1
+            
+        while left <= right and s[right] == char:
+            right := right - 1
+    
+    return right - left + 1
+
+# Test the solution
+print(minimumLength("abcab"))  # Output should be 2
+print(minimumLength("aabccabba"))  # Output should be 0
