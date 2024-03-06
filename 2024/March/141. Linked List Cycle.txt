@@ -1,0 +1,19 @@
+Function hasCycle(head):
+    if head is None or head.next is None:
+        return False
+        
+    # Initialize slow and fast pointers
+    slow = head
+    fast = head.next
+    
+    # Loop until either fast pointer reaches the end or they meet
+    while slow is not equal to fast:
+        if fast is None or fast.next is None:
+            return False
+        # Move slow pointer one step forward
+        slow = slow.next
+        # Move fast pointer two steps forward
+        fast = fast.next.next
+        
+    # If fast and slow pointers meet, there's a cycle
+    return True
