@@ -1,0 +1,15 @@
+middleNode(head):
+    # Initialize slow and fast pointers to the head of the linked list
+    slow = head
+    fast = head
+    
+    # Iterate through the linked list until fast pointer reaches the end
+    while fast is not null and fast.next is not null:
+        # Move slow pointer one step forward
+        slow = slow.next
+        
+        # Move fast pointer two steps forward
+        fast = fast.next.next
+    
+    # At this point, slow pointer is at the middle node
+    return slow
