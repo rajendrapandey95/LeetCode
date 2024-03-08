@@ -1,0 +1,23 @@
+function maxFrequencyElements(nums):
+    frequencies = {}  // Dictionary to store frequency of each element
+    max_frequency = 0  // Variable to track maximum frequency
+    total_frequencies = 0  // Variable to store total frequencies of elements with maximum frequency
+    
+    // Iterate through each element in the input array
+    for num in nums:
+        // Update frequency of current element
+        frequencies[num] = frequencies.get(num, 0) + 1
+        frequency = frequencies[num]
+        
+        // If the frequency of current element is greater than max_frequency
+        if frequency > max_frequency:
+            // Update max_frequency
+            max_frequency = frequency
+            // Reset total_frequencies to the new max frequency
+            total_frequencies = frequency
+        // If the frequency of current element is equal to max_frequency
+        else if frequency == max_frequency:
+            // Add the frequency of current element to total_frequencies
+            total_frequencies += frequency
+            
+    return total_frequencies
