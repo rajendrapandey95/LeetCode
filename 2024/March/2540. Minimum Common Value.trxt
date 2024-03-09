@@ -1,0 +1,18 @@
+getCommon(nums1, nums2):
+    pointer1 = 0   // Initialize pointer for nums1
+    pointer2 = 0   // Initialize pointer for nums2
+    
+    // Iterate until we exhaust any of the arrays
+    while pointer1 < length(nums1) and pointer2 < length(nums2):
+        // If we find a common integer, return it
+        if nums1[pointer1] equals nums2[pointer2]:
+            return nums1[pointer1]
+        
+        // Move the pointer for the array with the smaller element
+        if nums1[pointer1] < nums2[pointer2]:
+            pointer1 += 1
+        else:
+            pointer2 += 1
+    
+    // If no common integer is found
+    return -1
