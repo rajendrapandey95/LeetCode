@@ -1,0 +1,10 @@
+function intersection(nums1, nums2):
+    // Convert arrays to sets
+    set1 = set(nums1)
+    set2 = set(nums2)
+    
+    // Find the intersection of sets
+    intersection_set = set1.intersection(set2)
+    
+    // Convert the intersection set to a list and return
+    return list(intersection_set)
