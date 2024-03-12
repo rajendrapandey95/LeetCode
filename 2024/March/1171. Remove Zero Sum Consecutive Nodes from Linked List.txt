@@ -1,0 +1,18 @@
+Function removeZeroSumSublists(head):
+    Create a dummy node and point it to the head of the linked list
+    Initialize a hashmap to store cumulative sums and their corresponding nodes
+    Set the initial cumulative sum to 0
+    
+    Loop through the linked list while head is not None:
+        Update the cumulative sum by adding the value of the current node to it
+        
+        If the current sum exists in the hashmap:
+            Traverse back from the previous occurrence of the same sum up to the current occurrence
+            Remove nodes between these occurrences
+            Adjust the pointers to skip nodes with zero sum
+        Else:
+            Store the current sum and its corresponding node in the hashmap
+        
+        Move to the next node
+        
+    Return the next node of the dummy node as the head of the final linked list
