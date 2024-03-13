@@ -1,0 +1,21 @@
+function pivotInteger(n):
+    left = 1
+    right = n
+    
+    total_sum = n * (n + 1) / 2
+
+    // Binary search loop
+    while left < right:
+        mid = (left + right) / 2
+
+        // Check if mid is the pivot integer
+        if mid * mid - total_sum < 0:
+            left = mid + 1  // Update left pointer
+        else:
+            right = mid  // Update right pointer
+
+    // Check if left pointer is the pivot integer
+    if left * left - total_sum == 0:
+        return left  // Return pivot integer
+    else:
+        return -1  // Return -1 if no pivot integer found
