@@ -1,0 +1,17 @@
+numSubarraysWithSum(nums, goal):
+    count = 0
+    prefix_sums = [0]
+    sum_count = {0: 1}
+    
+    for num in nums:
+        prefix_sums.append(prefix_sums[-1] + num)
+        
+        if (prefix_sums[-1] - goal) is in sum_count:
+            count += sum_count[prefix_sums[-1] - goal]
+        
+        if prefix_sums[-1] is in sum_count:
+            increment sum_count[prefix_sums[-1]]
+        else:
+            set sum_count[prefix_sums[-1]] to 1
+    
+    return count
