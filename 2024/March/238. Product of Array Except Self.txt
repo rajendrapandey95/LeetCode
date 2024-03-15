@@ -1,0 +1,21 @@
+function productExceptSelf(nums):
+    n = length of nums
+    prefix_products = array of size n filled with 1's
+    suffix_products = array of size n filled with 1's
+    result = array of size n
+    
+    # Calculate prefix products
+    prefix_products[0] = 1
+    for i from 1 to n - 1:
+        prefix_products[i] = prefix_products[i - 1] * nums[i - 1]
+    
+    # Calculate suffix products
+    suffix_products[n - 1] = 1
+    for i from n - 2 to 0:
+        suffix_products[i] = suffix_products[i + 1] * nums[i + 1]
+    
+    # Multiply corresponding prefix and suffix products to get the final answer
+    for i from 0 to n - 1:
+        result[i] = prefix_products[i] * suffix_products[i]
+    
+    return result
