@@ -1,0 +1,18 @@
+function findMinArrowShots(points):
+    if points is empty:
+        return 0
+    
+    Sort points based on their end points
+    
+    arrows = 1
+    end = points[0].end
+    
+    for i from 1 to length of points - 1:
+        balloon = points[i]
+        if balloon.start > end:
+            arrows += 1
+            end = balloon.end
+        else:
+            end = min(end, balloon.end)
+    
+    return arrows
