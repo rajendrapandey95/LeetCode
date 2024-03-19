@@ -1,0 +1,11 @@
+Define a function leastInterval(tasks: List[str], n: int) -> int:
+    Initialize a dictionary or counter to count the frequency of each task.
+    Iterate through the tasks and count the frequency of each task.
+    Find the maximum frequency of any task.
+    Count the number of tasks with the maximum frequency.
+    Calculate the minimum intervals required:
+        For each repetition of the most frequent task, we need (max_count - 1) intervals.
+        Each interval has (n + 1) slots.
+        Add the number of tasks with the maximum frequency to the calculated intervals.
+    The minimum intervals required should be at least the length of the tasks array.
+    Return the maximum of the length of the tasks array and the calculated minimum intervals.
