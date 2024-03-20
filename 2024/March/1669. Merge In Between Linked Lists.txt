@@ -1,0 +1,22 @@
+mergeInBetween(list1, a, b, list2):
+    start = new ListNode()
+    end = list1
+
+    # Set start to node a - 1 and end to node b
+    for index from 0 to b - 1:
+        if index equals a - 1:
+            start = end
+        end = end.next
+
+    # Connect the start node to list2
+    start.next = list2
+
+    # Find the tail of list2
+    while list2.next is not None:
+        list2 = list2.next
+
+    # Set the tail of list2 to end.next
+    list2.next = end.next
+    end.next = None
+    
+    return list1
