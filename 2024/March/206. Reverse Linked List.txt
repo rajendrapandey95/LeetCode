@@ -1,0 +1,16 @@
+function reverseList(head):
+    // Initialize pointers
+    prevNode = null
+    currNode = head
+    
+    // Iterate through the list
+    while currNode is not null:
+        nextNode = currNode.next  // Store reference to next node
+        currNode.next = prevNode  // Reverse pointer direction
+        
+        // Move to the next pair of nodes
+        prevNode = currNode
+        currNode = nextNode
+    
+    // Return the new head of the reversed list
+    return prevNode
