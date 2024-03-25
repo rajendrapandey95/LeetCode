@@ -1,0 +1,9 @@
+function findDuplicates(nums):
+    duplicates = []
+    for each num in nums:
+        index = abs(num) - 1
+        if nums[index] < 0:
+            add abs(num) to duplicates
+        else:
+            set nums[index] to -nums[index]
+    return duplicates
