@@ -1,0 +1,15 @@
+function firstMissingPositive(nums):
+    n = length(nums)
+    
+    // Mark the presence of positive integers by placing them at their correct positions
+    for i from 0 to n-1:
+        while nums[i] is within the range of 1 to n and nums[nums[i] - 1] is not equal to nums[i]:
+            swap nums[i] and nums[nums[i] - 1]
+    
+    // Find the first missing positive integer
+    for i from 0 to n-1:
+        if nums[i] is not equal to i + 1:
+            return i + 1
+    
+    // If all positive integers from 1 to len(nums) are present, return len(nums) + 1
+    return n + 1
