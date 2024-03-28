@@ -1,0 +1,24 @@
+maxSubarrayLength(nums, k):
+    frequency = {}      // Dictionary to store frequency of elements
+    left = 0            // Left pointer of the sliding window
+    max_length = 0      // Maximum length of good subarray found so far
+    total_elements = 0  // Total number of elements within the window
+
+    // Iterate through the array with the right pointer
+    for right = 0 to length(nums) - 1:
+        // Update frequency of nums[right]
+        frequency[nums[right]] += 1
+        
+        // Increment total_elements
+        total_elements += 1
+        
+        // Slide the left pointer if frequency exceeds k
+        while frequency[nums[right]] > k:
+            frequency[nums[left]] -= 1
+            left += 1
+            total_elements -= 1
+        
+        // Update max_length if the current window is valid
+        max_length = max(max_length, total_elements)
+
+    return max_length
