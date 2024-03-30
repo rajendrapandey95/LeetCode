@@ -1,0 +1,24 @@
+Class Solution:
+    Function subarraysWithKDistinct(nums: List[int], k: int) -> int:
+        Function atMostKDistinct(k):
+            Initialize count as a dictionary with initial value 0
+            Initialize distinct to 0
+            Initialize left to 0
+            Initialize total to 0
+            
+            For each right, value pair in enumerate(nums):
+                If count[value] is equal to 0:
+                    Increment distinct by 1
+                Increment count[value] by 1
+                
+                While distinct is greater than k:
+                    Decrement count[nums[left]] by 1
+                    If count[nums[left]] is equal to 0:
+                        Decrement distinct by 1
+                    Increment left by 1
+                
+                Increment total by (right - left + 1)
+            
+            Return total
+        
+        Return the result of atMostKDistinct(k) minus atMostKDistinct(k - 1)
