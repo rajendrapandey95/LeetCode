@@ -1,0 +1,18 @@
+countSubarrays(nums, minK, maxK):
+    mink_idx = -1
+    maxk_idx = -1
+    bad_idx = -1
+    ans = 0
+    
+    for i from 0 to len(nums) - 1:
+        if nums[i] is not in range(minK, maxK + 1):
+            bad_idx = i
+        if nums[i] is equal to minK:
+            mink_idx = i
+        if nums[i] is equal to maxK:
+            maxk_idx = i
+        
+        if mink_idx is not equal to -1 and maxk_idx is not equal to -1:
+            ans += max(0, min(maxk_idx, mink_idx) - bad_idx)
+    
+    return ans
