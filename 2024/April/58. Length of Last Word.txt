@@ -1,0 +1,7 @@
+lengthOfLastWord(s):
+    Trim leading and trailing spaces from the input string s.
+    Find the index of the last space in the trimmed string.
+    If no space is found:
+        Return the length of the entire trimmed string.
+    Else:
+        Return the length of the last word by subtracting the index of the last space from the length of the trimmed string and subtracting 1.
