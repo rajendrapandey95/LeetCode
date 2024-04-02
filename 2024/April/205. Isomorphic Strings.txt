@@ -1,0 +1,21 @@
+function isIsomorphic(s, t):
+    if length of s is not equal to length of t:
+        return False
+    
+    s_to_t_mapping = empty dictionary
+    t_to_s_mapping = empty dictionary
+    
+    for each character char_s in s and character char_t in t:
+        if char_s exists in s_to_t_mapping:
+            if s_to_t_mapping[char_s] is not equal to char_t:
+                return False
+        else:
+            add char_s as key and char_t as value to s_to_t_mapping
+            
+        if char_t exists in t_to_s_mapping:
+            if t_to_s_mapping[char_t] is not equal to char_s:
+                return False
+        else:
+            add char_t as key and char_s as value to t_to_s_mapping
+            
+    return True
