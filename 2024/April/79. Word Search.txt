@@ -1,0 +1,31 @@
+function exist(board, word):
+    rows = number of rows in board
+    cols = number of columns in board
+
+    function dfs(row, col, index):
+        if index == length of word:
+            return True
+
+        if row is out of bounds or col is out of bounds or board[row][col] != word[index]:
+            return False
+
+        temp = board[row][col]
+        board[row][col] = '#' // Mark the cell as visited
+
+        found = (
+            dfs(row + 1, col, index + 1) or
+            dfs(row - 1, col, index + 1) or
+            dfs(row, col + 1, index + 1) or
+            dfs(row, col - 1, index + 1)
+        )
+
+        board[row][col] = temp // Restore the cell value
+
+        return found
+
+    for i from 0 to rows:
+        for j from 0 to cols:
+            if board[i][j] == word[0] and dfs(i, j, 0):
+                return True
+
+    return False
