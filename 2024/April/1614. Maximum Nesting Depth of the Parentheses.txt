@@ -1,0 +1,12 @@
+Function maxDepth(s: string) -> integer:
+    max_depth := 0
+    current_depth := 0
+    
+    for each character char in s:
+        if char is '(':
+            current_depth := current_depth + 1
+            max_depth := max(max_depth, current_depth)
+        else if char is ')':
+            current_depth := current_depth - 1
+    
+    return max_depth
