@@ -1,0 +1,8 @@
+Function makeGood(s: string) -> string:
+    Initialize an empty stack
+    For each character char in s:
+        If stack is not empty and abs(ord(char) - ord(stack.top())) == 32:
+            Pop the top character from the stack
+        Else:
+            Push char onto the stack
+    Return the string obtained by joining the characters left in the stack
