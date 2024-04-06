@@ -1,0 +1,21 @@
+Function minRemoveToMakeValid(s: string) -> string:
+    stack = empty stack
+    to_remove = empty set
+    
+    For each character c and its index i in string s:
+        If c is '(':
+            Push index i onto stack
+        Else if c is ')':
+            If stack is not empty:
+                Pop an index from stack
+            Else:
+                Add index i to to_remove set
+
+    Add remaining indices from stack to to_remove set
+    
+    Construct the result string excluding characters at indices in to_remove set
+    
+    Return the result string
+
+# Test the solution
+Print minRemoveToMakeValid("lee(t(c)o)de)")  # Output: "lee(t(c)o)de"
