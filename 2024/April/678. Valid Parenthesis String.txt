@@ -1,0 +1,18 @@
+function checkValidString(s: string) -> boolean:
+    min_open = 0
+    max_open = 0
+    
+    for each char in s:
+        if char == '(':
+            increment min_open
+            increment max_open
+        else if char == ')':
+            decrement min_open
+            decrement max_open
+            if max_open < 0:
+                return False
+        else:  # char == '*'
+            decrement min_open
+            increment max_open
+            
+    return min_open == 0
