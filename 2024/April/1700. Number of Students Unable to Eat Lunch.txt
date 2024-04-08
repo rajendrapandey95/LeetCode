@@ -1,0 +1,18 @@
+Function countStudents(students, sandwiches):
+    Initialize students_queue with students
+    Initialize sandwiches_stack with sandwiches
+    Initialize unable_to_eat to 0
+    
+    While students_queue is not empty:
+        If the student at the front of students_queue prefers the top sandwich:
+            Remove the student from students_queue
+            Remove the top sandwich from sandwiches_stack
+            Reset unable_to_eat to 0
+        Else:
+            Move the student to the end of students_queue
+            Increment unable_to_eat by 1
+            
+            If unable_to_eat equals the length of students_queue:
+                Break the loop
+    
+    Return the length of students_queue as the number of students unable to eat
