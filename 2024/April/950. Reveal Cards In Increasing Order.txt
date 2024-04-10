@@ -1,0 +1,7 @@
+Sort the deck in increasing order.
+Initialize an empty list to store the final ordering of the deck (result).
+Iterate through each card in the sorted deck:
+    If result is not empty:
+        Move the last card to the front of the result list.
+    Insert the current card at the bottom of the result list.
+Return the result list, which contains the ordering that reveals the cards in increasing order.
