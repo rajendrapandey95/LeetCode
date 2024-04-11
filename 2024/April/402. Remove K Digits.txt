@@ -1,0 +1,37 @@
+function removeKdigits(num: string, k: int) -> string:
+    // Initialize an empty stack to store digits
+    stack = []
+    
+    // Iterate through each digit in the number
+    for each digit in num:
+        // While there are still digits to remove and the current digit is less than the top digit in the stack
+        while k > 0 and stack is not empty and digit < top digit in stack:
+            // Remove the top digit from the stack
+            stack.pop()
+            // Decrement the count of remaining digits to remove
+            k -= 1
+        
+        // Push the current digit onto the stack
+        stack.push(digit)
+    
+    // If there are remaining digits to remove, remove them from the end of the stack
+    while k > 0:
+        // Remove the last digit from the stack
+        stack.pop()
+        // Decrement the count of remaining digits to remove
+        k -= 1
+    
+    // Remove any leading zeros from the stack
+    while stack is not empty and the first digit in the stack is '0':
+        // Remove the leading zero
+        stack.pop()
+    
+    // If the stack is empty, return '0'
+    if stack is empty:
+        return '0'
+    
+    // Concatenate the digits in the stack to form the resulting number
+    result = concatenate all digits in stack
+    
+    // Return the resulting number
+    return result
