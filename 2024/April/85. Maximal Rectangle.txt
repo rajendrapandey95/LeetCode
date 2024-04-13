@@ -1,0 +1,27 @@
+function maximalRectangle(matrix):
+    if matrix is empty:
+        return 0
+    
+    rows = number of rows in matrix
+    cols = number of columns in matrix
+    heights = array of size (cols + 1) initialized with 0s
+    max_area = 0
+    
+    for each row in matrix:
+        // Update heights based on the current row
+        for each column in matrix:
+            if matrix[row][column] == '1':
+                heights[column] += 1
+            else:
+                heights[column] = 0
+        
+        // Calculate maximum rectangle area for the current row
+        stack = [ -1 ]  // stack to store indices of increasing heights
+        for each column in matrix + 1:
+            while heights[column] < heights[top of stack]:
+                h = heights[stack.pop()]
+                w = column - stack[top of stack] - 1
+                max_area = max(max_area, h * w)
+            push column to stack
+    
+    return max_area
