@@ -1,0 +1,13 @@
+function islandPerimeter(grid):
+    perimeter = 0
+    rows = number of rows in grid
+    cols = number of columns in grid
+
+    Define directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+    for each cell in the grid:
+        if cell is land:
+            count the number of water neighbors
+            add (4 - number of water neighbors) to perimeter
+
+    return perimeter
