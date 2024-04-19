@@ -1,0 +1,21 @@
+function numIslands(grid):
+    if grid is empty:
+        return 0
+        
+    function dfs(row, col):
+        if row < 0 or col < 0 or row >= grid.rows() or col >= grid.columns() or grid[row][col] == '0':
+            return
+        grid[row][col] = '0'  # Mark the cell as visited
+        dfs(row + 1, col)  # Visit neighboring cells
+        dfs(row - 1, col)
+        dfs(row, col + 1)
+        dfs(row, col - 1)
+        
+    num_islands = 0
+    for each row in grid:
+        for each cell in row:
+            if cell is '1':
+                num_islands += 1
+                dfs(row, col)
+                
+    return num_islands
