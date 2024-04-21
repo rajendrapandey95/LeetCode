@@ -1,0 +1,24 @@
+function validPath(n, edges, source, destination):
+    # Construct adjacency list from edge list
+    adj_list = defaultdict(list)
+    for each edge in edges:
+        u, v = edge
+        adj_list[u].append(v)
+        adj_list[v].append(u)
+    
+    # Array to keep track of visited nodes
+    visited = array of size n initialized to False
+    
+    # Define DFS function
+    function dfs(node):
+        if node == destination:
+            return True
+        visited[node] = True
+        for each neighbor in adj_list[node]:
+            if neighbor is not visited:
+                if dfs(neighbor) is True:
+                    return True
+        return False
+    
+    # Start DFS from source vertex
+    return dfs(source)
