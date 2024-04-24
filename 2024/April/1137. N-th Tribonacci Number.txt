@@ -1,0 +1,19 @@
+function tribonacci(n):
+    if n == 0:
+        return 0
+    else if n == 1 or n == 2:
+        return 1
+
+    # Initialize the first three Tribonacci numbers
+    t0 = 0
+    t1 = 1
+    t2 = 1
+    
+    # Compute the nth Tribonacci number iteratively
+    for i from 3 to n:
+        tn = t0 + t1 + t2
+        t0 = t1
+        t1 = t2
+        t2 = tn
+    
+    return t2
