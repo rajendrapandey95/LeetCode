@@ -1,0 +1,12 @@
+Function longestIdealString(s: string, k: integer) -> integer:
+    n = length of s
+    Initialize a 2D array dp of size n x 26, filled with zeros
+
+    for i from 0 to n-1:
+        for j from 0 to 25:
+            dp[i][j] = maximum of dp[i][j] and dp[i - 1][j] if i > 0 else 0
+
+            if i == 0 or absolute difference between ord(s[i]) and ord(s[i - 1]) <= k:
+                dp[i][ord(s[i]) - ord('a')] = maximum of dp[i][ord(s[i]) - ord('a')] and dp[i - 1][j] + 1
+
+    return maximum value in dp
