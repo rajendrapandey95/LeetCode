@@ -1,0 +1,24 @@
+Function minFallingPathSum(grid):
+    n = size of grid
+    Initialize dp as a 2D array of size n x n
+    
+    # Initialize dp array with the first row of the grid
+    for j from 0 to n-1:
+        dp[0][j] = grid[0][j]
+    
+    # Iterate through each row of the grid
+    for i from 1 to n-1:
+        for j from 0 to n-1:
+            min_prev = +infinity
+            
+            # Check the adjacent cells in the previous row
+            for k from 0 to n-1:
+                if k != j:
+                    min_prev = minimum of min_prev and dp[i-1][k]
+            
+            # Update dp[i][j] with the minimum falling path sum ending at (i, j)
+            dp[i][j] = grid[i][j] + min_prev
+    
+    # Find the minimum falling path sum in the last row
+    min_sum = minimum value in dp[n-1]
+    Return min_sum
