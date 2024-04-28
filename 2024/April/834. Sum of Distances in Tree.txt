@@ -1,0 +1,32 @@
+function sumOfDistancesInTree(n, edges):
+    graph = defaultdict(list)
+    for each edge in edges:
+        add edge to graph
+
+    count = [1] * n
+    distance_sum = [0] * n
+    result = [0] * n
+    
+    // First DFS traversal to calculate count and distance_sum
+    function dfs(node, parent):
+        for each child in graph[node]:
+            if child is not equal to parent:
+                dfs(child, node)
+                count[node] += count[child]
+                distance_sum[node] += distance_sum[child] + count[child]
+    
+    // Second DFS traversal to update result
+    function dfs2(node, parent):
+        result[node] = distance_sum[node]
+        for each child in graph[node]:
+            if child is not equal to parent:
+                result[child] = result[node] - count[child] + (n - count[child])
+                dfs2(child, node)
+    
+    // Perform first DFS traversal from root
+    dfs(0, -1)
+    
+    // Perform second DFS traversal from root
+    dfs2(0, -1)
+    
+    return result
