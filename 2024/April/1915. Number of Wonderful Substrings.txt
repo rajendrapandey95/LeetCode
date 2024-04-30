@@ -1,0 +1,23 @@
+function wonderfulSubstrings(word):
+    count = array of size 1024, initialized with zeros
+    result = 0
+    bitmask = 0
+
+    # Initialize count for an empty substring
+    count[0] = 1
+
+    for each character char in word:
+        # Update the bitmask by toggling the corresponding bit for the current character
+        bitmask ^= 1 << (char - 'a')
+
+        # Increment the count for the current bitmask
+        result += count[bitmask]
+
+        # Increment the count for each bitmask where exactly one bit is different
+        for i from 0 to 9:
+            result += count[bitmask ^ (1 << i)]
+
+        # Update the count for the current bitmask
+        count[bitmask] += 1
+
+    return result
