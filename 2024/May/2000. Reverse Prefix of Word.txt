@@ -1,0 +1,26 @@
+Function reversePrefix(word, ch):
+    if ch does not exist in word:
+        return word
+
+    index = findIndex(word, ch)
+    prefix = word[0:index + 1]
+    reversedPrefix = reverseString(prefix)
+    restOfWord = word[index + 1:]
+    result = concatenate(reversedPrefix, restOfWord)
+    return result
+
+Function findIndex(word, ch):
+    for each character c in word:
+        if c is equal to ch:
+            return index of c
+    return -1
+
+Function reverseString(string):
+    reversedString = empty string
+    for each character c in string:
+        prepend c to reversedString
+    return reversedString
+
+Function concatenate(string1, string2):
+    concatenatedString = string1 + string2
+    return concatenatedString
