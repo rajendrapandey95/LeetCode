@@ -1,0 +1,12 @@
+function findMaxK(nums):
+    num_set = empty set
+    max_k = -1
+    
+    for num in nums:
+        add num to num_set
+    
+    for num in nums:
+        if -num exists in num_set:
+            max_k = max(max_k, absolute value of num)
+    
+    return max_k
