@@ -1,0 +1,29 @@
+function compareVersion(version1: string, version2: string) -> integer:
+    // Helper function to extract a version number segment
+    function helper(s: string, idx: integer) -> [integer, integer]:
+        num = 0
+        while idx < length(s):
+            // Extract characters until a dot is encountered or until the end of the string
+            if s[idx] == '.':
+                break
+            else:
+                num = num * 10 + integer(s[idx])
+            idx += 1
+        // Return the extracted number and the index to resume parsing from
+        return [num, idx+1]
+
+    // Initialize indices for both version strings
+    i = j = 0
+    // Continue comparison until both version strings are exhausted
+    while i < length(version1) or j < length(version2):
+        // Extract version number segments from both strings
+        [v1, i] = helper(version1, i) if i < length(version1) else [0, i+1]
+        [v2, j] = helper(version2, j) if j < length(version2) else [0, j+1]
+        // Compare the extracted segments
+        if v1 > v2:
+            return 1
+        else if v1 < v2:
+            return -1
+
+    // If all segments are equal, return 0
+    return 0
