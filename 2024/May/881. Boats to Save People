@@ -1,0 +1,15 @@
+function numRescueBoats(people: List[int], limit: int) -> int:
+    Sort the array 'people' in non-decreasing order
+    Initialize two pointers 'left' and 'right' to the beginning and end of the array respectively
+    Initialize 'boats' to 0 (this will count the number of boats needed)
+    
+    while left <= right:
+        if people[left] + people[right] <= limit:
+            Increment 'left' by 1
+            Decrement 'right' by 1
+        else:
+            Decrement 'right' by 1
+        
+        Increment 'boats' by 1
+    
+    Return 'boats'
