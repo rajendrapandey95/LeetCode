@@ -1,0 +1,11 @@
+RemoveNodes(head):
+    if head is None or head.next is None:
+        return head
+
+    next_node = RemoveNodes(head.next)
+        
+    if head.val < next_node.val:
+        return next_node
+     
+    head.next = next_node
+    return head
