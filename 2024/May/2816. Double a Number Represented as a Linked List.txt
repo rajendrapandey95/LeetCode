@@ -1,0 +1,11 @@
+Define a function doubleIt that takes a ListNode head as input and returns a ListNode.
+Reverse the linked list and store it in a variable reversed_list.
+Initialize variables carry to 0, current to reversed_list, and previous to None.
+While current is not None:
+    Calculate the new value for the current node: new_value = current.val * 2 + carry.
+    Update the current node's value: current.val = new_value % 10.
+    Update carry for the next iteration: carry = 1 if new_value > 9 else 0.
+    Move to the next node: previous, current = current, current.next.
+If carry is not 0, add an extra node with value carry at the end of the list: previous.next = ListNode(carry).
+Reverse the modified list again to get the original order and store it in result.
+Return result.
