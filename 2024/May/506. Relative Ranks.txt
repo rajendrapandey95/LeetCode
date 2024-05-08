@@ -1,0 +1,24 @@
+Function findRelativeRanks(score: List[int]) -> List[str]:
+    // Create a dictionary to store scores and indices
+    score_dict = {}
+    For i from 0 to len(score) - 1:
+        score_dict[score[i]] = i
+    
+    // Sort scores in descending order
+    sorted_scores = sort(score, reverse=True)
+    
+    // Initialize answer array
+    answer = new List[str] of size len(score)
+    
+    // Assign ranks
+    For i from 0 to len(sorted_scores) - 1:
+        If i == 0:
+            answer[score_dict[sorted_scores[i]]] = "Gold Medal"
+        Else If i == 1:
+            answer[score_dict[sorted_scores[i]]] = "Silver Medal"
+        Else If i == 2:
+            answer[score_dict[sorted_scores[i]]] = "Bronze Medal"
+        Else:
+            answer[score_dict[sorted_scores[i]]] = str(i + 1)
+    
+    Return answer
