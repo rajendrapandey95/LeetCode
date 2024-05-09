@@ -1,0 +1,21 @@
+function maximumHappinessSum(happiness: List[int], k: int) -> int:
+    // Sort the happiness values in descending order
+    sort happiness in descending order
+
+    // Initialize total happiness sum and turns counter
+    total_happiness_sum = 0
+    turns = 0
+
+    // Iterate over the first k children
+    for i from 0 to k-1:
+        // Calculate the adjusted happiness for the current child
+        adjusted_happiness = max(happiness[i] - turns, 0)
+        
+        // Add the adjusted happiness to the total happiness sum
+        total_happiness_sum += adjusted_happiness
+        
+        // Increment turns for the next iteration
+        turns += 1
+
+    // Return the total happiness sum
+    return total_happiness_sum
