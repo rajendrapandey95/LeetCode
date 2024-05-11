@@ -1,0 +1,24 @@
+minCostToHireWorkers(quality, wage, k):
+    n = length(quality)
+    total_cost = infinity
+    current_total_quality = 0
+    wage_to_quality_ratio = []
+
+    for i from 0 to n-1:
+        wage_to_quality_ratio.append((wage[i] / quality[i], quality[i]))
+
+    sort wage_to_quality_ratio by first element in ascending order
+
+    highest_quality_workers = empty heap
+
+    for i from 0 to n-1:
+        push quality[i] * -1 onto highest_quality_workers heap
+        current_total_quality += quality[i]
+
+        if length(highest_quality_workers) > k:
+            current_total_quality += pop highest_quality_workers heap
+
+        if length(highest_quality_workers) == k:
+            total_cost = minimum of total_cost and current_total_quality * wage_to_quality_ratio[i][0]
+
+    return total_cost
