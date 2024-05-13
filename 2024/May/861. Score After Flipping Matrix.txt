@@ -1,0 +1,21 @@
+function matrixScore(grid):
+    m = number of rows in grid
+    n = number of columns in grid
+    
+    # Step 1: Ensure each row starts with 1
+    for each row in grid:
+        if the first element of the row is 0:
+            toggle all elements in the row
+        
+    # Step 2: Ensure maximum score for each column
+    for j from 1 to n-1:
+        count_1 = count of 1s in the jth column
+        if count_1 is less than m/2:
+            toggle all elements in the jth column
+    
+    # Calculate the score
+    score = 0
+    for each row in grid:
+        Convert the row from binary to decimal and add to score
+    
+    return score
