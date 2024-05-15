@@ -1,0 +1,69 @@
+function maximumSafenessFactor(grid):
+    n = size of grid
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    multi_source_queue = new Queue
+
+    for i from 0 to n-1:
+        for j from 0 to n-1:
+            if grid[i][j] == 1:
+                multi_source_queue.push((i, j))
+                grid[i][j] = 0
+            else:
+                grid[i][j] = -1
+
+    while multi_source_queue is not empty:
+        size = size of multi_source_queue
+        while size > 0:
+            curr = multi_source_queue.pop()
+            for d in directions:
+                di, dj = curr[0] + d[0], curr[1] + d[1]
+                val = grid[curr[0]][curr[1]]
+                if isValidCell(grid, di, dj) and grid[di][dj] == -1:
+                    grid[di][dj] = val + 1
+                    multi_source_queue.push((di, dj))
+            size -= 1
+
+    start = 0
+    end = 0
+    res = -1
+    for i from 0 to n-1:
+        for j from 0 to n-1:
+            end = max(end, grid[i][j])
+
+    while start <= end:
+        mid = start + (end - start) // 2
+        if isValidSafeness(grid, mid):
+            res = mid
+            start = mid + 1
+        else:
+            end = mid - 1
+
+    return res
+
+function isValidCell(grid, i, j):
+    n = size of grid
+    return 0 <= i < n and 0 <= j < n
+
+function isValidSafeness(grid, min_safeness):
+    n = size of grid
+
+    if grid[0][0] < min_safeness or grid[n - 1][n - 1] < min_safeness:
+        return False
+
+    traversal_queue = new Queue
+    visited = new 2D array of size n x n, initialized to False
+    visited[0][0] = True
+    traversal_queue.push((0, 0))
+
+    while traversal_queue is not empty:
+        curr = traversal_queue.pop()
+        if curr[0] == n - 1 and curr[1] == n - 1:
+            return True
+
+        for d in directions:
+            di, dj = curr[0] + d[0], curr[1] + d[1]
+            if isValidCell(grid, di, dj) and not visited[di][dj] and grid[di][dj] >= min_safeness:
+                visited[di][dj] = True
+                traversal_queue.push((di, dj))
+
+    return False
