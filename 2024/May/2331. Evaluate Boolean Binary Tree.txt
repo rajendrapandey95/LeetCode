@@ -1,0 +1,16 @@
+function evaluateTree(root):
+    if root is null:
+        return false
+    
+    if root is a leaf node:
+        return True if root value is 1 else False
+    
+    left_val = evaluateTree(root.left)
+    right_val = evaluateTree(root.right)
+    
+    if root value is 2:
+        return left_val OR right_val
+    else if root value is 3:
+        return left_val AND right_val
+    else:
+        return false
