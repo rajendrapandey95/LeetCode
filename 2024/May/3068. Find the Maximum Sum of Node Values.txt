@@ -1,0 +1,16 @@
+FUNCTION maxSumOfNodes(index, isEven, nums, k, memo):
+    IF index == LENGTH(nums):
+        RETURN 0 IF isEven == 1 ELSE -INFINITY
+    
+    IF memo[index][isEven] != -1:
+        RETURN memo[index][isEven]
+
+    noXorDone = nums[index] + maxSumOfNodes(index + 1, isEven, nums, k, memo)
+    xorDone = (nums[index] XOR k) + maxSumOfNodes(index + 1, isEven XOR 1, nums, k, memo)
+
+    memo[index][isEven] = MAX(xorDone, noXorDone)
+    RETURN memo[index][isEven]
+
+FUNCTION maximumValueSum(nums, k, edges):
+    memo = INITIALIZE 2D ARRAY OF SIZE [LENGTH(nums)][2] WITH -1
+    RETURN maxSumOfNodes(0, 1, nums, k, memo)
