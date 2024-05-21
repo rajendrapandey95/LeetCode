@@ -1,0 +1,13 @@
+function generateSubsets(nums):
+    result = []
+    
+    function backtrack(start, currentSubset):
+        result.append(currentSubset)
+        
+        for i from start to length(nums) - 1:
+            currentSubset.append(nums[i])
+            backtrack(i + 1, currentSubset)
+            currentSubset.pop()
+    
+    backtrack(0, [])
+    return result
