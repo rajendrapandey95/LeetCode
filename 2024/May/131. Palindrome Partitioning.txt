@@ -1,0 +1,22 @@
+function partition(s):
+    result = []
+    backtrack(s, 0, [], result)
+    return result
+
+function backtrack(s, start, path, result):
+    if start == length(s):
+        add path copy to result
+        return
+    for end from start + 1 to length(s) + 1:
+        if is_palindrome(s, start, end):
+            append substring(s, start, end) to path
+            backtrack(s, end, path, result)
+            remove last element from path
+
+function is_palindrome(s, start, end):
+    while start < end:
+        if s[start] != s[end - 1]:
+            return false
+        start = start + 1
+        end = end - 1
+    return true
