@@ -1,0 +1,13 @@
+function specialArray(nums):
+    Sort nums in non-decreasing order  // This can be done using any sorting algorithm
+    
+    for x from 0 to length(nums):  // Iterate over possible values of x
+        count = 0
+        for num in nums:
+            if num >= x:
+                count = count + 1
+                
+        if count == x:  // If exactly x numbers are greater than or equal to x
+            return x
+            
+    return -1  // If no such x is found
