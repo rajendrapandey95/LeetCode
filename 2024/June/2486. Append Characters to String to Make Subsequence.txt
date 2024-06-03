@@ -1,0 +1,16 @@
+FUNCTION appendCharacters(s: STRING, t: STRING) RETURNS INTEGER
+    n = LENGTH(s)
+    m = LENGTH(t)
+    
+    i = 0
+    j = 0
+    
+    WHILE i < n AND j < m
+        IF s[i] == t[j] THEN
+            j = j + 1
+        END IF
+        i = i + 1
+    END WHILE
+    
+    RETURN m - j
+END FUNCTION
