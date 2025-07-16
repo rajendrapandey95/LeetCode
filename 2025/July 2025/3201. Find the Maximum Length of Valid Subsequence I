@@ -1,0 +1,9 @@
+class Solution:
+    def maximumLength(self, nums: list[int]) -> int:
+        res = 0
+        for p in [(0, 0), (0, 1), (1, 0), (1, 1)]:
+            c = 0
+            for x in nums:
+                if x % 2 == p[c % 2]: c += 1
+            res = max(res, c)
+        return res
